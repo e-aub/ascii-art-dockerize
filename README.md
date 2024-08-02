@@ -1,71 +1,58 @@
-# ascii-art-web
+# ASCII Art Dockerize
 
-`ascii-art-web` from [01Talent/Zone01 Oujda curriculum](https://01talent.com/) is a Go-based web application that allows users to generate ASCII art from input text and selected banner styles. The web interface provides a graphical way to create and view ASCII art, leveraging different banner styles.
-
+[ascii-art-dockerize](https://github.com/01-edu/public/tree/master/subjects/ascii-art-web/dockerize) from [01Talent/Zone01 Oujda curriculum](https://01talent.com/) involves creating a web server in Go, containerizing it using Docker, and adhering to best practices in both Go and Dockerfile creation. The web server serves ASCII art representations based on specified text and banner.
 ## Description
 
-`ascii-art-web` is designed to provide an interactive web interface for generating ASCII art using predefined banner styles. Users can input text and select a banner style, and the server will return the generated ASCII art. The application includes:
-- A main page with a form for text input and banner selection.
-- The ability to handle POST requests to generate ASCII art based on user input.
-- Appropriate HTTP responses and status codes for different scenarios.
+The ASCII Art Dockerize project involves:
+
+- Containerizing the [ascii-art-web](https://github.com/e-aub/ascii-art-web) web server using Docker.
+- Adhering to best practices in both Go and Dockerfile creation.
 
 ## Authors
 
 - [Ayoub El Haddad](https://learn.zone01oujda.ma/git/aelhadda)
 
-## Usage
+## Features
+
+- Containerized application for easy deployment.
+- Metadata applied to Docker objects for better management.
+- Automated garbage collection of unused Docker objects.
+
+## Installation
 
 To run the `ascii-art-web` server:
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/e-aub/ascii-art-web
+   git clone https://github.com/e-aub/ascii-art-dockerize
    ```
 
 2. Navigate to the project directory:
    ```sh
-   cd ascii-art-web
+   cd ascii-art-dockerize
    ```
 
-3. Build and run the server:
+3. Build the Docker image:
 
    ```sh
-   go run main.go
+   docker build -t ascii-art-dockerize .
    ```
-4. Open your web browser and navigate to http://localhost:8080 to access the web interface.
 
-## Implementation Details
-The application consists of the following main components:
+### Usage
 
-### Handlers
-`AsciiHandler:` Handles POST requests to /ascii-art to generate ASCII art. It validates the banner style, generates ASCII art using the asciiArt package, and handles errors appropriately.
-### Endpoints
-`GET /:` Serves the main page with a form for user input. This uses Go templates to render the page.
+1. Run the Docker container:
 
-`POST /ascii-art:` Accepts form data (text and banner) and generates ASCII art. Redirects to the home page or displays an error based on the result.
+  ```sh
+   docker run -d -p 8080:8080 ascii-art-dockerize
+   ```
+2. Access the web server:
 
-### Error Handling
-`500 Internal Server Error:` Returned if there is an issue during ASCII art generation.
+   Open your browser and go to `http://localhost:8080`.
 
-`400 Bad Request:` Returned if the provided banner is invalid.
+3. For more details on how to use the web server, visit:
+   [ascii-art-web](https://github.com/e-aub/ascii-art-web)
 
-`405 Method Not Allowed:` Returned if a non-POST request is made to the /ascii-art endpoint or a non-GET request is made to the / endpoint.
-
-### Instructions
-1. Ensure that Go is installed on your system.
-2. Place your HTML templates in the templates directory at the project root.
-3. Follow the usage instructions to build and run the server.
-4. Navigate to http://localhost:8080 in your web browser to use the application.
-### HTTP Status Codes
-`200 OK:` Returned for successful requests.
-
-`404 Not Found:` Returned if the requested resource (e.g., template or banner) is not found.
-
-`400 Bad Request:` Returned for invalid requests.
-
-`500 Internal Server Error:` Returned for unhandled errors.
-
-Contributing
+### Contributing
 If you find any issues or have suggestions for improvements, please submit an issue or propose a change via a pull request.
 
 For any questions or further assistance, feel free to reach out.
